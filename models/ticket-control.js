@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 class Ticket {
-  constuctor(numero, escritorio) {
+  constructor(numero, escritorio) {
     this.numero = numero;
     this.escritorio = escritorio;
   }
@@ -13,7 +13,7 @@ class TicketControl {
     this.ultimo = 0;
     this.hoy = new Date().getDate();
     this.tickets = [];
-    this.tultimos4 = [];
+    this.ultimos4 = [];
 
     this.init();
   }
@@ -23,7 +23,7 @@ class TicketControl {
       ultimo: this.ultimo,
       hoy: this.hoy,
       tickets: this.tickets,
-      tultimos4: this.tultimos4
+      ultimos4: this.ultimos4
     }
   }
 
@@ -44,8 +44,8 @@ class TicketControl {
   }
 
   siguiente() {
-    this.ultimo ++;
-    const ticket = new Ticket(this.escritorio, null);
+    this.ultimo = this.ultimo + 1;
+    const ticket = new Ticket(this.ultimo, null);
     this.tickets.push(ticket);
 
     this.guardarDB();
